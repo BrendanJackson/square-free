@@ -1,6 +1,16 @@
 #include <iostream> //standard input/output
 using namespace std; //calls std namespace for the whole project, prevents calling std: on each operation
 
+/*
+* Brendan Jackson
+* "CS215−J1E1"
+* Spring 2017
+* "Homework Assignment #2"
+* This homework assignment determines whether or not any square number exists
+* in whatever pair of integers that you choose to give it.
+*/
+
+
 //prototype for get_user_input function
 void get_user_input(int &input1, int &input2); 
 //prototype for is_it_square_free function
@@ -10,10 +20,10 @@ void result(int input1, int input2, bool number1_result, bool number2_result);
 
 // void sweet_test();
 int main(){
-	int input1;  //defines, and declares a variable named input1
-	int input2; //defines, and declares a variable named input2
-	bool number1_result; //defines, and declares a variable named number1_result
-	bool number2_result; //defines, and declares a variable named number2_result
+	int input1;  //defines and declares a variable named input1
+	int input2; //defines and declares a variable named input2
+	bool number1_result; //defines and declares a variable named number1_result
+	bool number2_result; //defines and declares a variable named number2_result
 
 	input1 = 0;  //initializes a variable named input1 to 0
 	input2 = 0; //initializes a variable named input2 to 0
@@ -29,9 +39,6 @@ int main(){
 	//calls the result function and passes in the input1, input2, number1_result, and number2_result arguements
 	result(input1, input2, number1_result, number2_result);
 
-	cout << "\n\n\n\n\n\n\n\n\n";
-
-
 
 }
 /*********************************************************************************
@@ -40,21 +47,28 @@ int main(){
 
 //Gets usable input from the user
 void get_user_input(int &input1, int &input2){
-
+	int range; //defines and declares and integer named range
+	range = (input1 < 2 || input1 > 5000); // initiates range for use as a conditional
 	//Gets input1 from the user
-	while (input1 < 2 || input1 > 5000){ //tests for input between 2 & 5000
+	while (range){ //tests for input between 2 & 5000
 		cout << "Enter the 1st integer of the pair, between 2 and 5000: "; //prompts user for input
 		cin >> input1; //recieves input
 		cin.clear(); //clears error flags
 		cin.ignore(numeric_limits<streamsize>::max(), '\n'); //skips to a line without the error
+			if(range)
+				cout << "\nImproper input, please try again\n\n";
+			else{}
 		}
 	
 	//Gets input2 from the user
-	while (input2 < 2 || input2 > 5000 ){ //tests for input between 2 & 5000
+	while (range){ //tests for input between 2 & 5000
 		cout << "\nEnter the 2nd integer of the pair, between 2 and 5000: "; //prompts user for input
 		cin >> input2; //recieves input
 		cin.clear(); //clears error flags
 		cin.ignore(numeric_limits<streamsize>::max(), '\n'); //skips to a line without the error
+			if(range)
+				cout << "\nImproper input, please try again\n\n";
+			else{}
 		}
 
 	}
@@ -74,9 +88,7 @@ void is_it_square_free(int &number1, int &number2, bool &number1_result, bool &n
 		if(number1 % square_numbers[i] == 0){
 			number1_result = false;  //sets number1_result to false if it contains a square factor
 			cout << square_numbers[i]  << " " ; //outputs any square factors with a space between them
-			} else {
-				
-			}
+			} else {}
 		}
 
 	//if number1_result is still square free after being checked the program outputs (none), if not, it breaks the line
@@ -93,9 +105,7 @@ void is_it_square_free(int &number1, int &number2, bool &number1_result, bool &n
 		if(number2 % square_numbers[i] == 0){
 			number2_result = false;  //sets number2_result to false if it contains a square factor
 			cout << square_numbers[i]  << " " ; //outputs any square factors with a space between them
-			} else {
-				
-			}
+			} else {}
 		}	
 
 	//if number2_result is still square free after being checked the program outputs (none), if not, it breaks the line
@@ -127,15 +137,3 @@ void result(int input1, int input2, bool number1_result, bool number2_result){
 	cout << endl;
 	}
 //END result()	
-
-// void sweet_test(){
-// 	bool number1_result; //defines, and declares a variable named number1_result
-// 	bool number2_result; //defines, and declares a variable named number2_result
-
-// 	number1_result = true; //initializes a variable named number1_result to true
-// 	number2_result = true; //initializes a variable named number1_result to true
-
-// 	is_it_square_free(1, 1, number1_result, number2_result);
-// 	result(1, 1, number1_result, number2_result);
-
-// }
